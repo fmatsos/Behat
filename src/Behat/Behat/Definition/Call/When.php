@@ -17,6 +17,8 @@ namespace Behat\Behat\Definition\Call;
  */
 final class When extends RuntimeDefinition
 {
+    public static string $keyword = 'When';
+
     /**
      * Initializes definition.
      *
@@ -26,6 +28,6 @@ final class When extends RuntimeDefinition
      */
     public function __construct($pattern, $callable, $description = null)
     {
-        parent::__construct('When', $pattern, $callable, $description);
+        parent::__construct(self::$keyword, $pattern, $callable, $description);
     }
 }
