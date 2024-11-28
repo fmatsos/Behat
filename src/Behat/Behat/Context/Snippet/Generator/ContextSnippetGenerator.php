@@ -35,10 +35,8 @@ final class ContextSnippetGenerator implements SnippetGenerator
     /**
      * @var string
      */
-    private static $templateTemplate = <<<TPL
-    /**
-     * @%%s %s
-     */
+    private static $snippetTemplate = <<<TPL
+    #[%%s('%s')]
     public function %s(%s): void
     {
         throw new PendingException();
@@ -56,15 +54,20 @@ TPL;
      * @var PatternIdentifier
      */
     private $patternIdentifier;
+    /**
+     * @var bool
+     */
+    private bool $useAttributes;
 
     /**
      * Initializes snippet generator.
      *
      * @param PatternTransformer $patternTransformer
      */
-    public function __construct(PatternTransformer $patternTransformer)
+    public function __construct(PatternTransformer $patternTransformer, bool $useAttributes)
     {
         $this->patternTransformer = $patternTransformer;
+        $this->useAttributes = $useAttributes;
 
         $this->setContextIdentifier(new FixedContextIdentifier(null));
         $this->setPatternIdentifier(new FixedPatternIdentifier(null));
@@ -88,6 +91,11 @@ TPL;
     public function setPatternIdentifier(PatternIdentifier $identifier)
     {
         $this->patternIdentifier = $identifier;
+    }
+
+    public function setUseAttributes(bool $useAttributes)
+    {
+        $this->useAttributes = $useAttributes;
     }
 
     /**
@@ -205,8 +213,8 @@ TPL;
     private function getSnippetTemplate($pattern, $methodName, array $methodArguments)
     {
         return sprintf(
-            self::$templateTemplate,
-            str_replace('%', '%%', $pattern),
+            self::$snippetTemplate,
+            str_replace('\'', '\\\'', $pattern),
             $methodName,
             implode(', ', $methodArguments)
         );
