@@ -12,12 +12,16 @@ namespace Behat\Behat\Context\Snippet\Generator;
 
 use Behat\Behat\Context\Environment\ContextEnvironment;
 use Behat\Behat\Context\Snippet\ContextSnippet;
+use Behat\Behat\Definition\Call as DefinitionCall;
 use Behat\Behat\Definition\Pattern\PatternTransformer;
 use Behat\Behat\Snippet\Exception\EnvironmentSnippetGenerationException;
 use Behat\Behat\Snippet\Generator\SnippetGenerator;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\StepNode;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Step\Given;
+use Behat\Step\Then;
+use Behat\Step\When;
 use Behat\Testwork\Environment\Environment;
 use ReflectionClass;
 
@@ -35,10 +39,8 @@ final class ContextSnippetGenerator implements SnippetGenerator
     /**
      * @var string
      */
-    private static $templateTemplate = <<<TPL
-    /**
-     * @%%s %s
-     */
+    private static $snippetTemplate = <<<TPL
+    #[%%s('%s')]
     public function %s(%s): void
     {
         throw new PendingException();
@@ -56,15 +58,20 @@ TPL;
      * @var PatternIdentifier
      */
     private $patternIdentifier;
+    /**
+     * @var bool
+     */
+    private bool $useAttributes;
 
     /**
      * Initializes snippet generator.
      *
      * @param PatternTransformer $patternTransformer
      */
-    public function __construct(PatternTransformer $patternTransformer)
+    public function __construct(PatternTransformer $patternTransformer, bool $useAttributes)
     {
         $this->patternTransformer = $patternTransformer;
+        $this->useAttributes = $useAttributes;
 
         $this->setContextIdentifier(new FixedContextIdentifier(null));
         $this->setPatternIdentifier(new FixedPatternIdentifier(null));
@@ -88,6 +95,11 @@ TPL;
     public function setPatternIdentifier(PatternIdentifier $identifier)
     {
         $this->patternIdentifier = $identifier;
+    }
+
+    public function setUseAttributes(bool $useAttributes)
+    {
+        $this->useAttributes = $useAttributes;
     }
 
     /**
@@ -182,6 +194,12 @@ TPL;
     {
         $usedClasses = array('Behat\Behat\Tester\Exception\PendingException');
 
+        $usedClasses[] = match ($step->getKeywordType()) {
+            DefinitionCall\Given::KEYWORD => Given::class,
+            DefinitionCall\When::KEYWORD => When::class,
+            DefinitionCall\Then::KEYWORD => Then::class,
+        };
+
         foreach ($step->getArguments() as $argument) {
             if ($argument instanceof TableNode) {
                 $usedClasses[] = 'Behat\Gherkin\Node\TableNode';
@@ -205,8 +223,8 @@ TPL;
     private function getSnippetTemplate($pattern, $methodName, array $methodArguments)
     {
         return sprintf(
-            self::$templateTemplate,
-            str_replace('%', '%%', $pattern),
+            self::$snippetTemplate,
+            str_replace('\'', '\\\'', $pattern),
             $methodName,
             implode(', ', $methodArguments)
         );
