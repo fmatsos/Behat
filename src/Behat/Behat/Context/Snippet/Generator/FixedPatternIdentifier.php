@@ -26,10 +26,8 @@ final class FixedPatternIdentifier implements PatternIdentifier
 
     /**
      * Initialises identifier.
-     *
-     * @param string $patternType
      */
-    public function __construct($patternType)
+    public function __construct(?string $patternType = null)
     {
         $this->patternType = $patternType;
     }
@@ -37,7 +35,7 @@ final class FixedPatternIdentifier implements PatternIdentifier
     /**
      * {@inheritdoc}
      */
-    public function guessPatternType($contextClass)
+    public function guessPatternType($contextClass): ?string
     {
         return $this->patternType;
     }
