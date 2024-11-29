@@ -12,9 +12,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then :token should be :value
-           */
+          #[Then(':token should be :value')]
           public function shouldBe($token, $value) {
           }
       }
@@ -44,9 +42,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then :token should have value of £:value
-           */
+          #[Then(':token should have value of £:value')]
           public function shouldHaveValueOf($token, $value) {
             echo $value;
           }
@@ -83,9 +79,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then :token should have value of :first.:second
-           */
+          #[Then(':token should have value of :first.:second')]
           public function shouldHaveValueOf($token, $first, $second) {
             echo $first . ' + ' . $second;
           }
@@ -125,9 +119,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then /I am (foo/
-           */
+          #[Then('/I am (foo/')]
           public function invalidRegex() {
           }
       }
@@ -153,9 +145,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given only second :second
-           */
+          #[Given('only second :second')]
           public function invalidRegex($first = 'foo', $second = 'fiz') {
             PHPUnit\Framework\Assert::assertEquals('foo', $first);
             PHPUnit\Framework\Assert::assertEquals('bar', $second);
@@ -219,9 +209,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I provide parameter :too12345678911234567890123456789012
-           */
+          #[Given('I provide parameter :too12345678911234567890123456789012')]
           public function parameterCouldBeNull($param) {}
       }
       """
@@ -289,9 +277,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I can provide parameters :someParam and :someParam2
-           */
+          #[Given('I can provide parameters :someParam and :someParam2')]
           public function multipleWrongNamedParameters($param1, $param2) {
             PHPUnit\Framework\Assert::assertEquals('one', $param1);
             PHPUnit\Framework\Assert::assertEquals('two', $param2);
@@ -322,9 +308,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I can provide parameters :someParam and :someParam2
-           */
+          #[Given('I can provide parameters :someParam and :someParam2')]
           public function multipleWrongNamedParameters($param1, $someParam) {
             PHPUnit\Framework\Assert::assertEquals('two', $param1);
             PHPUnit\Framework\Assert::assertEquals('one', $someParam);
@@ -355,9 +339,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I can provide :count parameters :firstParam and :otherParam
-           */
+          #[Given('I can provide :count parameters :firstParam and :otherParam')]
           public function multipleWrongNamedParameters($param1, $firstParam, $count) {
             PHPUnit\Framework\Assert::assertEquals('two', $param1);
             PHPUnit\Framework\Assert::assertEquals('one', $firstParam);
@@ -389,9 +371,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I can provide :count parameters :firstParam and :otherParam with:
-           */
+          #[Given('I can provide :count parameters :firstParam and :otherParam with:')]
           public function multipleWrongNamedParameters($param1, $firstParam, $count, $string) {
             PHPUnit\Framework\Assert::assertEquals('two', $param1);
             PHPUnit\Framework\Assert::assertEquals('one', $firstParam);
@@ -427,9 +407,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I can provide :count parameters for :name:
-           */
+          #[Given('I can provide :count parameters for :name:')]
           public function multipleWrongNamedParameters($count, $name, $string) {
           PHPUnit\Framework\Assert::assertEquals('2', $count);
             PHPUnit\Framework\Assert::assertEquals('thing', $name);
@@ -465,9 +443,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then /^the (?:JSON|json)(?: response)?(?: at "(?<path>.*)")? should(?<isNegative> not)? be:$/
-           */
+          #[Then('/^the (?:JSON|json)(?: response)?(?: at "(?<path>.*)")? should(?<isNegative> not)? be:$/')]
           public function checkEquality($path = null, $isNegative = null, PyStringNode $json = null)
           {
               PHPUnit\Framework\Assert::assertNull($path);
@@ -475,9 +451,7 @@ Feature: Step Definition Pattern
               PHPUnit\Framework\Assert::assertNotNull($json);
           }
 
-          /**
-           * @Then /^the other (?:JSON|json)(?: response)?(?: at "(?<path>.*)")? should(?<isNegative> not)? be:$/
-           */
+          #[Then('/^the other (?:JSON|json)(?: response)?(?: at "(?<path>.*)")? should(?<isNegative> not)? be:$/')]
           public function checkEquality2($json = null, $path = null, $isNegative = null)
           {
               PHPUnit\Framework\Assert::assertNull($path);
@@ -517,9 +491,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I have a package v:version
-           */
+          #[Given('I have a package v:version')]
           public function multipleWrongNamedParameters($version) {
           PHPUnit\Framework\Assert::assertEquals('2.5', $version);
           }
@@ -549,9 +521,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @When I enter the string :input
-           */
+          #[When('I enter the string :input')]
           public function multipleWrongNamedParameters($input) {
           PHPUnit\Framework\Assert::assertEquals('', $input);
           }
@@ -581,9 +551,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Then images should be uploaded to web\/uploads\/media\/default\/:arg1\/:arg2\/
-           */
+          #[Then('images should be uploaded to web\/uploads\/media\/default\/:arg1\/:arg2\/')]
           public function multipleWrongNamedParameters($arg1, $arg2) {
           PHPUnit\Framework\Assert::assertEquals('0001', $arg1);
           PHPUnit\Framework\Assert::assertEquals('01', $arg2);
@@ -614,9 +582,7 @@ Feature: Step Definition Pattern
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given I have a negative number :num
-           */
+          #[Given('I have a negative number :num')]
           public function multipleWrongNamedParameters($num) {
           PHPUnit\Framework\Assert::assertEquals('-3', $num);
           }

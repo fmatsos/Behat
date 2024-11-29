@@ -113,31 +113,23 @@ Feature: Step Arguments Transformations
               $this->user = $user;
           }
 
-          /**
-           * @Then /Username must be "([^"]+)"/
-           */
+          #[Then('/Username must be "([^"]+)"/')]
           public function usernameMustBe($username) {
               PHPUnit\Framework\Assert::assertEquals($username, $this->user->getUsername());
           }
 
-          /**
-           * @Then /Age must be (\d+)/
-           */
+          #[Then('/Age must be (\d+)/')]
           public function ageMustBe($age) {
               PHPUnit\Framework\Assert::assertEquals($age, $this->user->getAge());
               PHPUnit\Framework\Assert::assertIsInt($age);
           }
 
-          /**
-           * @Then the Usernames must be:
-           */
+          #[Then('the Usernames must be:')]
           public function usernamesMustBe(array $usernames) {
               PHPUnit\Framework\Assert::assertEquals($usernames[0], $this->user->getUsername());
           }
 
-          /**
-           * @Then /^the boolean (no) should be transformed to false$/
-           */
+          #[Then('/^the boolean (no) should be transformed to false$/')]
           public function theBooleanShouldBeTransformed($boolean) {
               PHPUnit\Framework\Assert::assertSame(false, $boolean);
           }
@@ -394,17 +386,13 @@ Feature: Step Arguments Transformations
               return null;
           }
 
-          /**
-           * @Given I have the value ":value"
-           */
+          #[Given('I have the value ":value"')]
           public function iHaveTheValue($value)
           {
               $this->value = $value;
           }
 
-          /**
-           * @Then it should be of type :type
-           */
+          #[Then('it should be of type :type')]
           public function itShouldBeOfType($type)
           {
               if (gettype($this->value) != $type && get_class($this->value) != $type) {
@@ -702,9 +690,7 @@ Feature: Step Arguments Transformations
            {
            }
 
-          /**
-           * @Then :string should be passed
-           */
+          #[Then(':string should be passed')]
           public function doSomething(string $job)
           {
 

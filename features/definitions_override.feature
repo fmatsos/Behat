@@ -12,9 +12,7 @@ Feature: Step Definitions Override
 
       class ParentContext
       {
-          /**
-           * @Then :token should be :value
-           */
+          #[Then(':token should be :value')]
           public function shouldBe($token, $value) {}
       }
 
@@ -47,17 +45,13 @@ Feature: Step Definitions Override
 
       class ParentContext
       {
-          /**
-           * @Then :token should be :value
-           */
+          #[Then(':token should be :value')]
           public function shouldBe($token, $value) {}
       }
 
       class FeatureContext extends ParentContext implements Context
       {
-          /**
-           * @Then :token should be equal to :value
-           */
+          #[Then(':token should be equal to :value')]
           public function shouldBe($token, $value) {}
       }
       """

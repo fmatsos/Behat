@@ -44,25 +44,19 @@ Feature: Different result types
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Given /^I have magically created (\d+)\$$/
-           */
+          #[Given('/^I have magically created (\d+)\$$/')]
           public function iHaveMagicallyCreated($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @When /^I have chose "([^"]*)" in coffee machine$/
-           */
+          #[When('/^I have chose "([^"]*)" in coffee machine$/')]
           public function iHaveChoseInCoffeeMachine($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^I should have "([^"]*)"$/
-           */
+          #[Then('/^I should have "([^"]*)"$/')]
           public function iShouldHave($arg1): void
           {
               throw new PendingException();
@@ -78,25 +72,19 @@ Feature: Different result types
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Given /^I have magically created (\d+)\$$/
-           */
+          #[Given('/^I have magically created (\d+)\$$/')]
           public function iHaveMagicallyCreated($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @When /^I have chose "([^"]*)" in coffee machine$/
-           */
+          #[When('/^I have chose "([^"]*)" in coffee machine$/')]
           public function iHaveChoseInCoffeeMachine($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^I should have "([^"]*)"$/
-           */
+          #[Then('/^I should have "([^"]*)"$/')]
           public function iShouldHave($arg1): void
           {
               throw new PendingException();
@@ -129,16 +117,12 @@ Feature: Different result types
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given /^human have ordered very very very hot "([^"]*)"$/
-           */
+          #[Given('/^human have ordered very very very hot "([^"]*)"$/')]
           public function humanOrdered($arg1): void {
               throw new PendingException;
           }
 
-          /**
-           * @When the coffee will be ready
-           */
+          #[When('the coffee will be ready')]
           public function theCoffeeWillBeReady(): void {
               throw new PendingException;
           }
@@ -160,9 +144,7 @@ Feature: Different result types
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Then /^I should say "([^"]*)"$/
-           */
+          #[Then('/^I should say "([^"]*)"$/')]
           public function iShouldSay($arg1): void
           {
               throw new PendingException();
@@ -184,9 +166,7 @@ Feature: Different result types
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Then /^I should say "([^"]*)"$/
-           */
+          #[Then('/^I should say "([^"]*)"$/')]
           public function iShouldSay($arg1): void
           {
               throw new PendingException();
@@ -225,16 +205,12 @@ Feature: Different result types
       {
           private $money = 0;
 
-          /**
-           * @Given /^I have thrown (\d+)\$ into machine$/
-           */
+          #[Given('/^I have thrown (\d+)\$ into machine$/')]
           public function pay($money) {
               $this->money += $money;
           }
 
-          /**
-           * @Then /^I should see (\d+)\$ on the screen$/
-           */
+          #[Then('/^I should see (\d+)\$ on the screen$/')]
           public function iShouldSee($money) {
               PHPUnit\Framework\Assert::assertEquals($money, $this->money);
           }
@@ -320,9 +296,7 @@ Feature: Different result types
           /** @Then /^the coffee should be almost done$/ */
           public function coffeeAlmostDone() {}
 
-          /**
-           * @Then /^I should see (\d+)\$ on the screen$/
-           */
+          #[Then('/^I should see (\d+)\$ on the screen$/')]
           public function iShouldSee($money) {
               PHPUnit\Framework\Assert::assertEquals($money, $this->money);
           }
@@ -380,9 +354,7 @@ Feature: Different result types
               throw new PendingException;
           }
 
-          /**
-           * @Then /^I should make him "([^"]*)"$/
-           */
+          #[Then('/^I should make him "([^"]*)"$/')]
           public function iShouldSee($money): void {
               throw new PendingException;
           }

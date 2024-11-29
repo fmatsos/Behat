@@ -12,19 +12,13 @@ Feature: Filters
 
       class FeatureContext implements Context
       {
-          /**
-           * @Given /^Some slow step N(\d+)$/
-           */
+          #[Given('/^Some slow step N(\d+)$/')]
           public function someSlowStepN($num) {}
 
-          /**
-           * @Given /^Some normal step N(\d+)$/
-           */
+          #[Given('/^Some normal step N(\d+)$/')]
           public function someNormalStepN($num) {}
 
-          /**
-           * @Given /^Some fast step N(\d+)$/
-           */
+          #[Given('/^Some fast step N(\d+)$/')]
           public function someFastStepN($num) {}
       }
       """
@@ -161,7 +155,7 @@ Feature: Filters
       5 steps (5 passed)
       """
 
-  Scenario: Narrative Filter 
+  Scenario: Narrative Filter
     Given a file named "behat.yml" with:
       """
       default:

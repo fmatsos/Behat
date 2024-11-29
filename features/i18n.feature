@@ -17,30 +17,22 @@ Feature: I18n
       {
           private $value = 0;
 
-          /**
-           * @Given /Я ввел (\d+)/
-           */
+          #[Given('/Я ввел (\d+)/')]
           public function iHaveEntered($number) {
               $this->value = intval($number);
           }
 
-          /**
-           * @Then /Я должен иметь (\d+)/
-           */
+          #[Then('/Я должен иметь (\d+)/')]
           public function iShouldHave($number) {
               PHPUnit\Framework\Assert::assertEquals(intval($number), $this->value);
           }
 
-          /**
-           * @When /Я добавлю (\d+)/
-           */
+          #[When('/Я добавлю (\d+)/')]
           public function iAdd($number) {
               $this->value += intval($number);
           }
 
-          /**
-           * @When /^Что-то еще не сделано$/
-           */
+          #[When('/^Что-то еще не сделано$/')]
           public function somethingNotDone() {
               throw new PendingException();
           }
@@ -137,9 +129,7 @@ Feature: I18n
 
       --- FeatureContext не содержит необходимых определений. Вы можете добавить их используя шаблоны:
 
-          /**
-           * @Then /^Добавить "([^"]*)" число$/
-           */
+          #[Then('/^Добавить "([^"]*)" число$/')]
           public function dobavitChislo($arg1): void
           {
               throw new PendingException();
@@ -177,9 +167,7 @@ Feature: I18n
 
       --- FeatureContext не содержит необходимых определений. Вы можете добавить их используя шаблоны:
 
-          /**
-           * @Then /^Добавить "([^"]*)" число$/
-           */
+          #[Then('/^Добавить "([^"]*)" число$/')]
           public function dobavitChislo($arg1): void
           {
               throw new PendingException();
@@ -217,9 +205,7 @@ Feature: I18n
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Then /^Добавить "([^"]*)" число$/
-           */
+          #[Then('/^Добавить "([^"]*)" число$/')]
           public function dobavitChislo($arg1): void
           {
               throw new PendingException();
@@ -257,9 +243,7 @@ Feature: I18n
 
       --- FeatureContext has missing steps. Define them with these snippets:
 
-          /**
-           * @Then /^Добавить "([^"]*)" число$/
-           */
+          #[Then('/^Добавить "([^"]*)" число$/')]
           public function dobavitChislo($arg1): void
           {
               throw new PendingException();

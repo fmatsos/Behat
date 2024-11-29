@@ -22,44 +22,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -137,44 +125,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -182,41 +158,31 @@ Feature: Append snippets option
 
           private function doSomethingUndefinedWith() {}
 
-          /**
-           * @Then /^do something undefined with \$$/
-           */
+          #[Then('/^do something undefined with \$$/')]
           public function doSomethingUndefinedWith2(): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^do something undefined with \\(\d+)$/
-           */
+          #[Then('/^do something undefined with \\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring:$/
-           */
+          #[Given('/^pystring:$/')]
           public function pystring(PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring (\d+):$/
-           */
+          #[Given('/^pystring (\d+):$/')]
           public function pystring2($arg1, PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^table:$/
-           */
+          #[Given('/^table:$/')]
           public function table(TableNode $table): void
           {
               throw new PendingException();
@@ -242,44 +208,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -307,44 +261,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -352,41 +294,31 @@ Feature: Append snippets option
 
           private function doSomethingUndefinedWith() {}
 
-          /**
-           * @Then /^do something undefined with \$$/
-           */
+          #[Then('/^do something undefined with \$$/')]
           public function doSomethingUndefinedWith2(): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^do something undefined with \\(\d+)$/
-           */
+          #[Then('/^do something undefined with \\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring:$/
-           */
+          #[Given('/^pystring:$/')]
           public function pystring(PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring (\d+):$/
-           */
+          #[Given('/^pystring (\d+):$/')]
           public function pystring2($arg1, PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^table:$/
-           */
+          #[Given('/^table:$/')]
           public function table(TableNode $table): void
           {
               throw new PendingException();
@@ -410,44 +342,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -475,44 +395,32 @@ Feature: Append snippets option
               $this->parameters = $parameters;
           }
 
-          /**
-           * @Given /^I have (\d+) apples?$/
-           */
+          #[Given('/^I have (\d+) apples?$/')]
           public function iHaveApples($count) {
               $this->apples = intval($count);
           }
 
-          /**
-           * @When /^I ate (\d+) apples?$/
-           */
+          #[When('/^I ate (\d+) apples?$/')]
           public function iAteApples($count) {
               $this->apples -= intval($count);
           }
 
-          /**
-           * @When /^I found (\d+) apples?$/
-           */
+          #[When('/^I found (\d+) apples?$/')]
           public function iFoundApples($count) {
               $this->apples += intval($count);
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($count) {
               \PHPUnit\Framework\Assert::assertEquals(intval($count), $this->apples);
           }
 
-          /**
-           * @Then /^context parameter "([^"]*)" should be equal to "([^"]*)"$/
-           */
+          #[Then('/^context parameter "([^"]*)" should be equal to "([^"]*)"$/')]
           public function contextParameterShouldBeEqualTo($key, $val) {
               \PHPUnit\Framework\Assert::assertEquals($val, $this->parameters[$key]);
           }
 
-          /**
-           * @Given /^context parameter "([^"]*)" should be array with (\d+) elements$/
-           */
+          #[Given('/^context parameter "([^"]*)" should be array with (\d+) elements$/')]
           public function contextParameterShouldBeArrayWithElements($key, $count) {
               \PHPUnit\Framework\Assert::assertIsArray($this->parameters[$key]);
               \PHPUnit\Framework\Assert::assertEquals(2, count($this->parameters[$key]));
@@ -520,41 +428,31 @@ Feature: Append snippets option
 
           private function doSomethingUndefinedWith() {}
 
-          /**
-           * @Then /^do something undefined with \$$/
-           */
+          #[Then('/^do something undefined with \$$/')]
           public function doSomethingUndefinedWith2(): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^do something undefined with \\(\d+)$/
-           */
+          #[Then('/^do something undefined with \\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring:$/
-           */
+          #[Given('/^pystring:$/')]
           public function pystring(PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring (\d+):$/
-           */
+          #[Given('/^pystring (\d+):$/')]
           public function pystring2($arg1, PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^table:$/
-           */
+          #[Given('/^table:$/')]
           public function table(TableNode $table): void
           {
               throw new PendingException();
@@ -649,81 +547,61 @@ Feature: Append snippets option
       class FirstContext implements Context
       {
 
-          /**
-           * @Given /^I have (\d+) apples$/
-           */
+          #[Given('/^I have (\d+) apples$/')]
           public function iHaveApples($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @When /^I ate (\d+) apple$/
-           */
+          #[When('/^I ate (\d+) apple$/')]
           public function iAteApple($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^I should have (\d+) apples$/
-           */
+          #[Then('/^I should have (\d+) apples$/')]
           public function iShouldHaveApples($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @When /^I found (\d+) apples$/
-           */
+          #[When('/^I found (\d+) apples$/')]
           public function iFoundApples($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^do something undefined with \$$/
-           */
+          #[Then('/^do something undefined with \$$/')]
           public function doSomethingUndefinedWith(): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @When /^I ate (\d+) apples$/
-           */
+          #[When('/^I ate (\d+) apples$/')]
           public function iAteApples($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Then /^do something undefined with \\(\d+)$/
-           */
+          #[Then('/^do something undefined with \\(\d+)$/')]
           public function doSomethingUndefinedWith2($arg1): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring:$/
-           */
+          #[Given('/^pystring:$/')]
           public function pystring(PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^pystring (\d+):$/
-           */
+          #[Given('/^pystring (\d+):$/')]
           public function pystring2($arg1, PyStringNode $string): void
           {
               throw new PendingException();
           }
 
-          /**
-           * @Given /^table:$/
-           */
+          #[Given('/^table:$/')]
           public function table(TableNode $table): void
           {
               throw new PendingException();
