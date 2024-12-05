@@ -190,7 +190,7 @@ Feature: Append snippets option
               throw new PendingException();
           }
 
-          #[Then('/^do something undefined with \\(\d+)$/')]
+          #[Then('/^do something undefined with \\\\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
@@ -352,7 +352,7 @@ Feature: Append snippets option
               throw new PendingException();
           }
 
-          #[Then('/^do something undefined with \\(\d+)$/')]
+          #[Then('/^do something undefined with \\\\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
@@ -512,7 +512,7 @@ Feature: Append snippets option
               throw new PendingException();
           }
 
-          #[Then('/^do something undefined with \\(\d+)$/')]
+          #[Then('/^do something undefined with \\\\(\d+)$/')]
           public function doSomethingUndefinedWith3($arg1): void
           {
               throw new PendingException();
@@ -664,7 +664,7 @@ Feature: Append snippets option
               throw new PendingException();
           }
 
-          #[Then('/^do something undefined with \\(\d+)$/')]
+          #[Then('/^do something undefined with \\\\(\d+)$/')]
           public function doSomethingUndefinedWith2($arg1): void
           {
               throw new PendingException();

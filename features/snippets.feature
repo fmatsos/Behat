@@ -95,7 +95,7 @@ Feature: Snippets generation and addition
               throw new PendingException();
           }
 
-          #[When('/^do something undefined with \\(\d+)$/')]
+          #[When('/^do something undefined with \\\\(\d+)$/')]
           public function doSomethingUndefinedWith($arg1): void
           {
               throw new PendingException();
