@@ -20,108 +20,86 @@ Feature: hooks
       use Behat\Behat\Context\Context;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Hook\AfterFeature;
+      use Behat\Hook\BeforeFeature;
+      use Behat\Hook\BeforeScenario;
+      use Behat\Hook\BeforeStep;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
 
       class FeatureContext implements Context
       {
           private $number;
           private $scenarioFilter;
 
-          /**
-           * @BeforeFeature
-           */
+          #[BeforeFeature]
           static public function doSomethingBeforeFeature($event) {
               $params = $event->getSuite()->getSetting('parameters');
               echo "= do something ".$params['before_feature'];
           }
 
-          /**
-           * @AfterFeature
-           */
+          #[AfterFeature]
           static public function doSomethingAfterFeature($event) {
               $params = $event->getSuite()->getSetting('parameters');
               echo "= do something ".$params['after_feature'];
           }
 
-          /**
-           * @BeforeFeature @someFeature
-           */
+          #[BeforeFeature('@someFeature')]
           static public function doSomethingBeforeSomeFeature($event) {
               echo "= do something before SOME feature";
           }
 
-          /**
-           * @AfterFeature @someFeature
-           */
+          #[AfterFeature('@someFeature')]
           static public function doSomethingAfterSomeFeature($event) {
               echo "= do something after SOME feature";
           }
 
-          /**
-           * @BeforeScenario
-           */
+          #[BeforeScenario]
           public function beforeScenario($event) {
               $this->number = 50;
           }
 
-          /**
-           * @BeforeScenario 130
-           */
+          #[BeforeScenario('130')]
           public function beforeScenario130($event) {
               $this->number = 130;
           }
 
-          /**
-           * @BeforeScenario @thirty
-           */
+          #[BeforeScenario('@thirty')]
           public function beforeScenarioThirty($event) {
               $this->number = 30;
           }
 
-          /**
-           * @BeforeScenario @exception
-           */
+          #[BeforeScenario('@exception')]
           public function beforeScenarioException($event) {
               throw new \Exception('Exception');
           }
 
-          /**
-           * @BeforeScenario @filtered
-           */
+          #[BeforeScenario('@filtered')]
           public function beforeScenarioFiltered($event) {
               $this->scenarioFilter = 'filtered';
           }
 
-          /**
-           * @BeforeScenario @~filtered
-           */
+          #[BeforeScenario('@~filtered')]
           public function beforeScenarioNotFiltered($event) {
               $this->scenarioFilter = '~filtered';
           }
 
-          /**
-           * @BeforeStep I must have 100
-           */
+          #[BeforeStep('I must have 100')]
           public function beforeStep100($event) {
               $this->number = 100;
           }
 
-          /**
-           * @Given /^I have entered (\d+)$/
-           */
+          #[Given('/^I have entered (\d+)$/')]
           public function iHaveEntered($number) {
               $this->number = intval($number);
           }
 
-          /**
-           * @Then /^I must have (\d+)$/
-           */
+          #[Then('/^I must have (\d+)$/')]
           public function iMustHave($number) {
               \PHPUnit\Framework\Assert::assertEquals(intval($number), $this->number);
           }
 
-          /**
-           * @Then I must have a scenario filter value of :value
-           */
+          #[Then('I must have a scenario filter value of :value')]
           public function iMustHaveScenarioFilter($filterValue) {
               \PHPUnit\Framework\Assert::assertEquals($filterValue, $this->scenarioFilter);
           }

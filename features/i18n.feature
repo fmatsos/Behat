@@ -12,35 +12,30 @@ Feature: I18n
           Behat\Behat\Tester\Exception\PendingException;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Step\When;
 
       class FeatureContext implements Context
       {
           private $value = 0;
 
-          /**
-           * @Given /Я ввел (\d+)/
-           */
+          #[Given('/Я ввел (\d+)/')]
           public function iHaveEntered($number) {
               $this->value = intval($number);
           }
 
-          /**
-           * @Then /Я должен иметь (\d+)/
-           */
+          #[Then('/Я должен иметь (\d+)/')]
           public function iShouldHave($number) {
               PHPUnit\Framework\Assert::assertEquals(intval($number), $this->value);
           }
 
-          /**
-           * @When /Я добавлю (\d+)/
-           */
+          #[When('/Я добавлю (\d+)/')]
           public function iAdd($number) {
               $this->value += intval($number);
           }
 
-          /**
-           * @When /^Что-то еще не сделано$/
-           */
+          #[When('/^Что-то еще не сделано$/')]
           public function somethingNotDone() {
               throw new PendingException();
           }

@@ -23,41 +23,36 @@ Feature: Definitions translations
       use Behat\Behat\Context\TranslatableContext;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Transformation\Transform;
 
       class FeatureContext implements TranslatableContext
       {
           private $numbers = array();
           private $result = 0;
 
-          /**
-           * @Given /^I have entered (\d+) into calculator$/
-           */
+          #[Given('/^I have entered (\d+) into calculator$/')]
           public function iHaveEnteredIntoCalculator($number) {
               $this->numbers[] = intval($number);
           }
 
-          /**
-           * @Given /^I have clicked "+"$/
-           */
+          #[Given('/^I have clicked "+"$/')]
           public function iHaveClickedPlus() {
               $this->result = array_sum($this->numbers);
           }
 
-          /**
-           * @Then /^I should see (\d+) on the screen$/
-           */
+          #[Then('/^I should see (\d+) on the screen$/')]
           public function iShouldSeeOnTheScreen($result) {
               PHPUnit\Framework\Assert::assertEquals(intval($result), $this->result);
           }
 
-          /** @Transform /"([^"]+)" user/ */
+          #[Transform('/"([^"]+)" user/')]
           public static function createUserFromUsername($username) {
               return (Object) array('name' => $username);
           }
 
-          /**
-           * @Then /^the ("[^"]+" user) name should be "([^"]*)"$/
-           */
+          #[Then('/^the ("[^"]+" user) name should be "([^"]*)"$/')]
           public function theUserUsername($user, $username) {
               PHPUnit\Framework\Assert::assertEquals($username, $user->name);
           }
@@ -126,41 +121,36 @@ Feature: Definitions translations
       use Behat\Behat\Context\TranslatableContext;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Transformation\Transform;
 
       class FeatureContext implements TranslatableContext
       {
           private $numbers = array();
           private $result = 0;
 
-          /**
-           * @Given /^I have entered (\d+) into calculator$/
-           */
+          #[Given('/^I have entered (\d+) into calculator$/')]
           public function iHaveEnteredIntoCalculator($number) {
               $this->numbers[] = intval($number);
           }
 
-          /**
-           * @Given /^I have clicked "+"$/
-           */
+          #[Given('/^I have clicked "+"$/')]
           public function iHaveClickedPlus() {
               $this->result = array_sum($this->numbers);
           }
 
-          /**
-           * @Then /^I should see (\d+) on the screen$/
-           */
+          #[Then('/^I should see (\d+) on the screen$/')]
           public function iShouldSeeOnTheScreen($result) {
               PHPUnit\Framework\Assert::assertEquals(intval($result), $this->result);
           }
 
-          /** @Transform /"([^"]+)" user/ */
+          #[Transform('/"([^"]+)" user/')]
           public static function createUserFromUsername($username) {
               return (Object) array('name' => $username);
           }
 
-          /**
-           * @Then /^the ("[^"]+" user) name should be "([^"]*)"$/
-           */
+          #[Then('/^the ("[^"]+" user) name should be "([^"]*)"$/')]
           public function theUserUsername($user, $username) {
               PHPUnit\Framework\Assert::assertEquals($username, $user->name);
           }
@@ -207,41 +197,36 @@ Feature: Definitions translations
       use Behat\Behat\Context\TranslatableContext;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Transformation\Transform;
 
       class FeatureContext implements TranslatableContext
       {
           private $numbers = array();
           private $result = 0;
 
-          /**
-           * @Given /^I have entered (\d+) into calculator$/
-           */
+          #[Given('/^I have entered (\d+) into calculator$/')]
           public function iHaveEnteredIntoCalculator($number) {
               $this->numbers[] = intval($number);
           }
 
-          /**
-           * @Given /^I have clicked "+"$/
-           */
+          #[Given('/^I have clicked "+"$/')]
           public function iHaveClickedPlus() {
               $this->result = array_sum($this->numbers);
           }
 
-          /**
-           * @Then /^I should see (\d+) on the screen$/
-           */
+          #[Then('/^I should see (\d+) on the screen$/')]
           public function iShouldSeeOnTheScreen($result) {
               PHPUnit\Framework\Assert::assertEquals(intval($result), $this->result);
           }
 
-          /** @Transform /"([^"]+)" user/ */
+          #[Transform('/"([^"]+)" user/')]
           public static function createUserFromUsername($username) {
               return (Object) array('name' => $username);
           }
 
-          /**
-           * @Then /^the ("[^"]+" user) name should be "([^"]*)"$/
-           */
+          #[Then('/^the ("[^"]+" user) name should be "([^"]*)"$/')]
           public function theUserUsername($user, $username) {
               PHPUnit\Framework\Assert::assertEquals($username, $user->name);
           }
@@ -297,41 +282,36 @@ Feature: Definitions translations
       use Behat\Behat\Context\TranslatableContext;
       use Behat\Gherkin\Node\PyStringNode,
           Behat\Gherkin\Node\TableNode;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Transformation\Transform;
 
       class FeatureContext implements TranslatableContext
       {
           private $numbers = array();
           private $result = 0;
 
-          /**
-           * @Given /^I have entered (\d+) into calculator$/
-           */
+          #[Given('/^I have entered (\d+) into calculator$/')]
           public function iHaveEnteredIntoCalculator($number) {
               $this->numbers[] = intval($number);
           }
 
-          /**
-           * @Given /^I have clicked "+"$/
-           */
+          #[Given('/^I have clicked "+"$/')]
           public function iHaveClickedPlus() {
               $this->result = array_sum($this->numbers);
           }
 
-          /**
-           * @Then /^I should see (\d+) on the screen$/
-           */
+          #[Then('/^I should see (\d+) on the screen$/')]
           public function iShouldSeeOnTheScreen($result) {
               PHPUnit\Framework\Assert::assertEquals(intval($result), $this->result);
           }
 
-          /** @Transform /"([^"]+)" user/ */
+          #[Transform('/"([^"]+)" user/')]
           public static function createUserFromUsername($username) {
               return (Object) array('name' => $username);
           }
 
-          /**
-           * @Then /^the ("[^"]+" user) name should be "([^"]*)"$/
-           */
+          #[Then('/^the ("[^"]+" user) name should be "([^"]*)"$/')]
           public function theUserUsername($user, $username) {
               PHPUnit\Framework\Assert::assertEquals($username, $user->name);
           }
@@ -387,22 +367,25 @@ Feature: Definitions translations
       <?php
 
       use Behat\Behat\Context\TranslatableContext;
+      use Behat\Step\Given;
+      use Behat\Step\Then;
+      use Behat\Transformation\Transform;
 
       class FeatureContext implements TranslatableContext
       {
           private $index;
 
-          /** @Transform /^(0|[1-9]\d*)(?:ую|ью|ю|ый|ой|ий|ый|й|ом|ем|м)?$/ */
+          #[Transform('/^(0|[1-9]\d*)(?:ую|ью|ю|ый|ой|ий|ый|й|ом|ем|м)?$/')]
           public function castToInt($number) {
             return intval($number) < PHP_INT_MAX ? intval($number) : $number;
           }
 
-          /** @Given I pick the :index thing */
+          #[Given('I pick the :index thing')]
           public function iPickThing($index) {
               $this->index = $index;
           }
 
-          /** @Then /^the index should be "([^"]*)"$/ */
+          #[Then('/^the index should be "([^"]*)"$/')]
           public function theIndexShouldBe($value) {
               PHPUnit\Framework\Assert::assertSame($value, $this->index);
           }
